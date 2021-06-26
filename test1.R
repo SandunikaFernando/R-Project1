@@ -70,7 +70,19 @@ x-y
 x*y
 x/y
 x^y
-x%%y  #modulus
+x%%y  #modulus(gives the remainder)
 x%/%y #integer division (gives the quotient)
 
+#relational Operators
+a=5
+a
+b=9
+b
+
+a<b
+a>b
+a<=b
+a>=b
+a==b
+a!=b
 
