@@ -59,5 +59,18 @@ k
 j
 l
 
+#arithmetic operators
+x=5
+x
+y=2
+y
+
+x+y
+x-y
+x*y
+x/y
+x^y
+x%%y  #modulus
+x%/%y #integer division (gives the quotient)
 
 
