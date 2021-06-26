@@ -45,3 +45,19 @@ data()
 
 write.csv(abc,file = "export")
 abc
+
+#assignment operators
+h<-10#leftward
+i<<-20
+j=30
+40->k#rightward
+50->>l
+h
+i
+j
+k
+j
+l
+
+
+
