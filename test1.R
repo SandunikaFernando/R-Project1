@@ -86,3 +86,21 @@ a>=b
 a==b
 a!=b
 
+#logical Operators
+f=14
+f
+
+#And Operator
+f>5 & f>15
+f>5 & f<15
+
+#OR operator
+f<5 | f>15
+f>5 | f>15
+
+#NOT operator
+!(f<5)
+f<5
+
+is.numeric(5)
+!is.numeric(5)
