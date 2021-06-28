@@ -115,6 +115,33 @@ c(T,T,F)&c(T,F,F)
 c(T,T,F)&& c(T,F,F)
 c(T,T,F)|| c(F,F,F)
 
+#Data Structures
+#vectors------
+#Numeric
+x=c(2,3,4)
+x
+class(x)
+length(x)
 
+#Character
+y=c('a','b','c')
+y
+class(y)
 
+#logical
+z=c(T,T,F,F)
+z
 
+#integers
+a=c(1L, 2L, 3L)
+class(a)
+
+#adding an element to the vector
+y=c(y, 'd')
+y
+
+#Vectors from a sequence of numbers
+series= 1:10
+series
+seq(10)
+seq(1,10,1.5)
