@@ -104,3 +104,17 @@ f<5
 
 is.numeric(5)
 !is.numeric(5)
+
+
+#Vectors
+#(Comparing all elements)
+c(T,T,F)&c(T,F,F)
+c(T,T,F)&c(T,F,F)
+!c(T,F,F)
+#(Element wise comparing)
+c(T,T,F)&& c(T,F,F)
+c(T,T,F)|| c(F,F,F)
+
+
+
+
