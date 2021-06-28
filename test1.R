@@ -145,3 +145,27 @@ series= 1:10
 series
 seq(10)
 seq(1,10,1.5)
+
+
+#Matrices-----
+#Creating a matrix
+m=matrix(1:10, nrow=2, ncol=5)
+m
+
+#checking dimension
+dim(m)
+
+#matrix filled row wise with giving names to rows and columns
+(myMatrix= matrix(1:6,nrow=3,byrow=TRUE,dimnames=list(c("d","e","f"),c("a","b"))))
+
+#matrix filled column wise
+(myMatrix=matrix(1:6,nrow=3,byrow=FALSE))
+
+#other ways to construct matrix
+m <-1:10
+dim(m)=c(5,2)
+m
+
+
+
+
