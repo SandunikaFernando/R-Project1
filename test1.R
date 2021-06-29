@@ -166,6 +166,16 @@ m <-1:10
 dim(m)=c(5,2)
 m
 
+#adding Column to a matrix
+c= c(7,8,9)
+myMatrix1=cbind(myMatrix, c)
+myMatrix1
 
+d= c(10,11,12)
+myMatrix2=cbind(myMatrix1, d)
+myMatrix2
 
-
+#adding row to a matrix
+g=c(13,14,15,16)
+myMatrix3=rbind(myMatrix2,g)
+myMatrix3
