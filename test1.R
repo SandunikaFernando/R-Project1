@@ -207,3 +207,18 @@ matrix.names <- c("Matrix1","Matrix2")
 #take these two vectors as inputs to the array
 result <-array(c(vector1,vector2),dim=c(3,3,2),dimnames=list(row.names,column.names,matrix.names))
 print(result)
+
+
+#Data Frames----
+#1st method
+
+df1=data.frame(name=c("S1","S2","S3"), age=c(22,23,24))
+df1
+
+#2nd Method
+(rollno=1:10)
+(name=paste('S',1:10,sep=''))
+(age=round(rnorm(10,mean=25,sd=2),1))#rounds up to 1 decimal point
+(gender=sample(c('M',"F"), size=2, replace=T))
+df2=data.frame(rollno, name, age, gender)
+df2
