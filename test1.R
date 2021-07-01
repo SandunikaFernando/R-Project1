@@ -222,3 +222,37 @@ df1
 (gender=sample(c('M',"F"), size=2, replace=T))
 df2=data.frame(rollno, name, age, gender)
 df2
+class(df2)
+
+
+#install packages
+#installing single package----
+install.packages('dplyr')
+#loading a single package
+library(dplyr)
+
+#installing multiple packages----
+install.packages(c('dplyr','plotly','readr'))
+
+
+#function used to load multiple packages
+install.packages('pacman')
+pacman::p_load(dplyr,tidyr,lubridate)
+search()
+require(lubridate)
+
+#to view loaded packages
+search()
+
+#to unload a packages
+detach("dplyr", unload=T)
+
+#remove installed packages
+remove.packages("dplyr")
+
+#updating all the installed packages
+update.packages()
+
+#updating selected packages
+update.packages(oldPkgs=c('dplyr','lubridate'))
+
