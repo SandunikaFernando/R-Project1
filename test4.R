@@ -84,3 +84,27 @@ subset(x.df,y>2 & V1>0.2)
 ?subset
 subset(x.df,y>2 & V2>0.4,select=c(V1,V4))
 
+###
+set.seed(1234)
+x<-round(matrix(rnorm(30,1), ncol=5),2)
+y<-c(1,seq(5))
+#combining x and y into one matrix
+x<-cbind(x,y)
+x
+
+#converting x into dataframe x.df
+x.df<-data.frame(x)
+x.df
+?rnorm
+
+#subsetting rows using the subset function
+subset(x.df,y>2)
+
+#subsetting rows using multiple conditional statements
+subset(x.df,y>2 & V1>0.2)
+
+#subsetting both rows and columns
+?subset
+subset(x.df,y>2 & V2>0.4,select=c(V1,V4))
+
+
