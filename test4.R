@@ -84,7 +84,7 @@ subset(x.df,y>2 & V1>0.2)
 ?subset
 subset(x.df,y>2 & V2>0.4,select=c(V1,V4))
 
-###
+###########
 set.seed(1234)
 x<-round(matrix(rnorm(30,1), ncol=5),2)
 y<-c(1,seq(5))
