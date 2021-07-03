@@ -12,7 +12,7 @@ df[,3]
 #value of Rows 1:3 in column 2
 df[1:3,2]
 
-#subset a vector
+#subset a vector----
 x<-c(2.1,4.2,3.3,5.4)
 
 #extracting 3rd and 1st element 
@@ -50,14 +50,37 @@ a[3,3]
 #excluding  2nd column: 2nd row
 a[-2,-2]
 
-#sub setting data frame
+#sub setting data frame----
 df<-data.frame(x=1:3,y=3:1,z=letters[1:3])
 df
-
 df[df$x==2,]
 
 df[df$y==2,]
 
 df[df$x==1,]
-
 df[df$x==3,]
+
+
+#Sub setting a function
+set.seed(1234)
+x<-round(matrix(rnorm(30,1), ncol=5),2)
+y<-c(1,seq(5))
+#combining x and y into one matrix
+x<-cbind(x,y)
+x
+
+#converting x into dataframe x.df
+x.df<-data.frame(x)
+x.df
+?rnorm
+
+#subsetting rows using the subset function
+subset(x.df,y>2)
+
+#subsetting rows using multiple conditional statements
+subset(x.df,y>2 & V1>0.2)
+
+#subsetting both rows and columns
+?subset
+subset(x.df,y>2 & V2>0.4,select=c(V1,V4))
+
