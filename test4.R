@@ -138,7 +138,7 @@ median(mtcars$mpg)
 
 #compute the variance
 var(mtcars$mpg)
-
+?var
 #compute the sd
 sd(mtcars$mpg)
 
