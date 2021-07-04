@@ -126,7 +126,7 @@ names[grep('[bu]',names,ignore.case=T)]
 mtcars
 which(mtcars$mpg>25)
 mtcars[which(mtcars$mpg>25),]
-
+?which
 
 #Descriptive Statistics----
 
