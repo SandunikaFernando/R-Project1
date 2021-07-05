@@ -172,7 +172,7 @@ colMeans(df)
 #row means
 rowMeans(df)
 
-
+#Apply family in R
 #Apply()----
 ?apply
 # data frame creation
@@ -198,8 +198,28 @@ row.sums
 
 apply(x,2,sort)
 
+#lapply()----
+#Create a list of matrices
+(A= matrix(1:9,nrow=3,byrow=F))
+(B= matrix(4:15,nrow=4,byrow=F))
+(C= data.frame(x=c(8,9,10),y=c(8,9,10)))
+MyList<- list(A,B,C)
+MyList
 
+#extract the 2nd column from 'MyList' with the selection operator '['with lapply()
+lapply(MyList,"[",,2)
+#extract the 1st row from 'MyList'
+lapply(MyList,"[",1,)
+MyList
 
+#Eg2
+movies<-c("SPIDERMAN","BATMAN","VERTIGO","CHINATOWN")
+movies
+movies_lower<-lapply(movies,tolower)
+movies_lower
 
-
-
+#sapply()
+A=lapply(MyList,"[",1,1)
+Z=sapply(MyList,"[",1,1)
+A
+Z
