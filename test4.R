@@ -173,9 +173,30 @@ colMeans(df)
 rowMeans(df)
 
 
+#Apply()----
+?apply
+# data frame creation
+df<-data.frame(first=c(1:10),second=c(11:20),third=c(21:30))
+df
 
+#2(margin)is for columns
+apply(df,2,mean)
 
+#1(margin) is for rows
+apply(df,1,mean)
 
+#sorting the data
+x<-cbind(x1=3, x2=c(4:1,2:5))
+x
+dimnames(x)[[1]]<-letters[1:8]
+x
+apply(x,2,mean)
+col.sums<-apply(x,2,sum)
+col.sums
+row.sums<-apply(x,1,sum)
+row.sums
+
+apply(x,2,sort)
 
 
 
