@@ -223,3 +223,15 @@ A=lapply(MyList,"[",1,1)
 Z=sapply(MyList,"[",1,1)
 A
 Z
+
+#tapply()----
+#mean MPG of each Am type in mtcars...
+?mtcars
+names(mtcars)
+head(mtcars)
+AM1=mtcars[,'am']
+AMCYL1=mtcars[,c('cyl','am')]
+MPG1=mtcars[,c('mpg')]
+tapply(MPG1, AM1, mean)
+tapply(MPG1, AMCYL1, mean)
+
