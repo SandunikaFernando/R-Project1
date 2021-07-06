@@ -224,6 +224,7 @@ Z=sapply(MyList,"[",1,1)
 A
 Z
 
+
 #tapply()----
 #mean MPG of each Am type in mtcars...
 ?mtcars
@@ -234,4 +235,24 @@ AMCYL1=mtcars[,c('cyl','am')]
 MPG1=mtcars[,c('mpg')]
 tapply(MPG1, AM1, mean)
 tapply(MPG1, AMCYL1, mean)
+
+#rep()----
+Z=sapply(MyList,"[",1,1)
+Z
+a=rep(Z,c(3,1,2))
+a
+?rep
+
+#mapply()----
+?mapply
+Q=matrix(c(rep(1,4), rep(2,4),rep(3,4),rep(4,4)),4,4)
+Q
+P=mapply(rep,1:4,4)
+P
+
+mapply(sum,1:4,1:4,1:4)
+#mapply sums up all the first element (1+1+1), sums up all the second elements(2+2+2) and so on the result will be
+
+
+
 
