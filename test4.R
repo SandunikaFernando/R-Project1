@@ -253,16 +253,26 @@ P
 mapply(sum,1:4,1:4,1:4)
 #mapply sums up all the first element (1+1+1), sums up all the second elements(2+2+2) and so on the result will be
 
+
 #Aggregate----
-?aggregate
+
+?aggregate #to understand the function
 ?ChickWeight
 
-heqad(ChickWeight)#inbuilt dataset
-data=ChickWeight
-dim(data)
+head(ChickWeight)#inbuilt data set
+data=ChickWeight#copying data set to another variable
+dim(data)#checking the dimensions of the data set
 
+#aggregating the mean weight depending on diet
 aggregate(data$weight, by=list(diet=data$Diet),FUN='mean')
 
+#finding the mean weight depending on diet
 aggregate(data$weight, by=list(time=data$Time,diet=data$Diet),FUN='mean')
 
+#To get first 6 and last 6 data using function head() and tail()
+head(aggregate(data$weight, by =list(time=data$Time, diet=data$Diet), FUN= mean))
 
+tail(aggregate(data$weight, by =list(time=data$Time, diet=data$Diet), FUN= mean))
+
+#finding max weight for each diet
+aggregate(data$weight, by = list(diet=data$Diet), FUN =max)
