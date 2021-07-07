@@ -253,6 +253,16 @@ P
 mapply(sum,1:4,1:4,1:4)
 #mapply sums up all the first element (1+1+1), sums up all the second elements(2+2+2) and so on the result will be
 
+#Aggregate----
+?aggregate
+?ChickWeight
 
+heqad(ChickWeight)#inbuilt dataset
+data=ChickWeight
+dim(data)
+
+aggregate(data$weight, by=list(diet=data$Diet),FUN='mean')
+
+aggregate(data$weight, by=list(time=data$Time,diet=data$Diet),FUN='mean')
 
 
