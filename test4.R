@@ -276,3 +276,23 @@ tail(aggregate(data$weight, by =list(time=data$Time, diet=data$Diet), FUN= mean)
 
 #finding max weight for each diet
 aggregate(data$weight, by = list(diet=data$Diet), FUN =max)
+
+
+
+#reading data to do another aggregation
+#using package xlsx
+
+library(xlsx)
+
+ad=read.xlsx('Book1.xlsx',sheetName = 2)
+ad
+
+#finding mean salary expenditure based on name 
+aggregate(ad$salary, by= list (name=ad$name), FUN=mean)
+
+#aggregating salary based on gender
+aggregate(ad$salary, by= list (Gender=ad$gender), FUN=mean)
+
+#aggregating salary based on name and roll no
+aggregate(ad$salary, by= list(RollNo=ad$rollno, Name= ad$name), FUN=mean)
+
