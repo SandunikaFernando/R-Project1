@@ -296,3 +296,23 @@ aggregate(ad$salary, by= list (Gender=ad$gender), FUN=mean)
 #aggregating salary based on name and roll no
 aggregate(ad$salary, by= list(RollNo=ad$rollno, Name= ad$name), FUN=mean)
 
+
+#Table Command----
+#table, addmargins, margin.table, prop.table
+
+mtcars
+str(mtcars)
+
+#table
+?table
+table(mtcars$cyl)
+table(mtcars$cyl,mtcars$gear)
+table(mtcars$cyl, mtcars$gear, dnn=c('cyl','gear'))#dnn = dimension names
+#store in expression t1
+t1= table(mtcars$cyl, mtcars$gear, dnn=c('cyl','gear'))
+t1
+
+#margin.table - sums values over margin - total sum of table
+margin.table(t1)
+margin.table(x=t1, margin=1)#cylinder wise #margin-1: row
+margin.table(x=t1, margin=2)#gear wise #margin-2: column
