@@ -316,3 +316,15 @@ t1
 margin.table(t1)
 margin.table(x=t1, margin=1)#cylinder wise #margin-1: row
 margin.table(x=t1, margin=2)#gear wise #margin-2: column
+
+
+
+#addmargins - extends a table with the marginal totals of the rows and columns
+#add different functions over the margins
+addmargins(A=t1, margin=1)
+addmargins(A=t1, margin=2, FUN=mean)
+addmargins(A=t1, margin=c(1,2), FUN=sum)
+addmargins(A=t1, margin=c(1,2), FUN=c(sum,mean))
+
+#different functions in rows and columns
+addmargins(A=t1, margin=c(1,2), FUN=list(list(sum,mean, length,mean),list(sd,sum)))
