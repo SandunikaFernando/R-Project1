@@ -327,4 +327,30 @@ addmargins(A=t1, margin=c(1,2), FUN=sum)
 addmargins(A=t1, margin=c(1,2), FUN=c(sum,mean))
 
 #different functions in rows and columns
-addmargins(A=t1, margin=c(1,2), FUN=list(list(sum,mean, length,mean),list(sd,sum)))
+addmargins(A=t1, margin=c(1,2), FUN=list(list(sum,length,mean),list(sd,sum)))
+
+
+#prop.table-convert a frequency table into proportions
+#proportion of value of the table (out of 100%)= sum will come up to 1
+t1
+prop.table(t1)
+?prop.table
+
+#Cyl 4, Gear 3: 1 out of 32= 3.12%
+1/32
+8/32
+prop.table(t1,margin=1)#sum of each row
+
+t1
+
+prop.table(t1, margin=2)#sum of each column
+
+#Cyl 4, Gear 3: 1 out of 15 gear 3 cars:1/15
+1/15
+
+#creating matrix using prop.table and adding %value
+matrix (paste(prop.table(x=t1)*100, '%', sep=''),ncol=3)
+
+#quick check
+rowSums(prop.table(t1,margin=1))
+colSums (prop.table(t1,margin=2))
