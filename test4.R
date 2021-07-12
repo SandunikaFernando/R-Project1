@@ -354,3 +354,42 @@ matrix (paste(prop.table(x=t1)*100, '%', sep=''),ncol=3)
 #quick check
 rowSums(prop.table(t1,margin=1))
 colSums (prop.table(t1,margin=2))
+
+
+
+#Data Manipulation in R-----
+
+vignette("dplyr")
+library(dplyr)
+
+#select function
+?select
+#select()keeps only the variables you mention
+
+df=mtcars
+factorcols=c('cyl','vs','am','gear','carb')
+df[factorcols]=lapply(df[factorcols], factor, ordered=T)
+
+sapply(df, class)#check the class
+str(df)
+abbreviate(rownames(df))
+#abbreviate the carnames
+names(df)
+table(df$cyl)#cylinder wise summary
+table(df$am)#transmission wise summary
+
+#combine it in  single command
+sapply(df[factorcols],table)
+
+select(mtcars,mpg)
+a=df %>% select(mpg)
+a
+b=df %>% select(mpg,cyl,am)
+b
+head(b)
+
+#rename: change column name and save it in the same variable in order to update records
+b=b %>% rename(MPG=mpg)
+head(b)
+b=b%>% rename(CYL=cyl,AM=am)
+head(b)
