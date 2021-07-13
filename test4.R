@@ -362,7 +362,7 @@ colSums (prop.table(t1,margin=2))
 vignette("dplyr")
 library(dplyr)
 
-#select function
+#select function----
 ?select
 #select()keeps only the variables you mention
 
@@ -393,3 +393,51 @@ b=b %>% rename(MPG=mpg)
 head(b)
 b=b%>% rename(CYL=cyl,AM=am)
 head(b)
+
+
+#Summarise function----
+?summarise
+df %>% summarise(Mmpg=mean(mpg))
+df %>% summarise(disp=mean(disp),hp=mean(hp))
+df %>% group_by(cyl) %>% summarise(meands=mean(disp),n=n())#n() is the count - here no.of cars
+df %>% group_by(am)%>% summarise(meanmpg=mean(mpg),n=n())
+
+#filter function----
+?filter
+filter(df, cyl==6)
+df %>% filter(carb>4)
+df %>% filter(mpg>mean(mpg))
+df %>% filter(cyl==4,disp>90)
+
+head(airquality)
+airquality %>% filter(Temp>70& Month>5)
+str(airquality)
+range(df$disp)
+
+
+#mutate function----
+?mutate
+?airquality
+head(airquality)
+median(airquality$Temp)
+head(mutate(airquality, TempInC=(Temp-32)*5/9)) #adding column for temp in Celsius
+#formula to convert into Celsius = (32F-32)*5/9=0C
+
+#arrange()----
+#change the ordering of the rows
+#arrange(data,sorting command, group_by)
+?arrange
+
+mtcars
+df %>% arrange(desc(cyl))
+df %>% group_by(cyl) %>% arrange((desc(mpg)))
+arrange(df,cyl,desc(disp)) #arrange rows in the descending order of disp, and then in the ascending order of the cyl
+
+df %>% arrange (desc(wt))
+arrange(airquality, desc(Month), Day) #arrange the rows in the descending order of Month, and then in the ascending order of Day
+
+
+
+
+
+
