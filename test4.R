@@ -437,7 +437,3 @@ df %>% arrange (desc(wt))
 arrange(airquality, desc(Month), Day) #arrange the rows in the descending order of Month, and then in the ascending order of Day
 
 
-
-
-
-
