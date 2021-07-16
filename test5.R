@@ -41,3 +41,34 @@ lapply(mtcars[,c('cyl','gear','am')], table)
 #you should know this to plan how many colors, shapes, size to choose
 plot(x=mtcars$wt, y=mtcars$mpg, col=c(1,2,3), pch=c(20,21,22), cex=c(1,2), xlab='Weight', ylab='Mileage', main='Weight Vs Mileage')
 
+
+#Boxplot
+
+?InsectSprays
+InsectSprays
+?boxplot
+
+#showing mean of mpg
+boxplot(x=mtcars$mpg, col ='green')#col= colour for plotting
+abline(h=mean(mtcars$mpg))
+abline(h=quantile(mtcars$mpg))
+
+boxplot(x=mtcars$mpg, col ='green', horizontal = T)#horizontal direction of boxplot
+
+#boxplot on a formula:
+?InsectSprays
+boxplot(count~spray, data = InsectSprays, col="lightgray")
+
+#add notches 
+boxplot(count ~ spray, data = InsectSprays,
+notch= F, col="Blue") #if we put notch=T,we'll get a warning message by saying " some notches went outside hinges ('box'):maybe set notch=FALSE"
+
+#using formula for mtcars
+boxplot(mpg~cyl, data = mtcars,
+        xlab="Number of Cylinders",
+        ylab="Miles Per Gallon",
+        notch=F,
+        main="Mileage Data",
+        col=c("green","yellow","purple"),
+        names=c("High","Medium","Low")
+        )
