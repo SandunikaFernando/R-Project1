@@ -61,7 +61,7 @@ boxplot(count~spray, data = InsectSprays, col="lightgray")
 
 #add notches 
 boxplot(count ~ spray, data = InsectSprays,
-notch= F, col="Blue") #if we put notch=T,we'll get a warning message by saying " some notches went outside hinges ('box'):maybe set notch=FALSE"
+notch= F, col="Blue") #if we put notch=T,we'll get a warning  message by saying " some notches went outside hinges ('box'):maybe set notch=FALSE"
 
 #using formula for mtcars
 boxplot(mpg~cyl, data = mtcars,
@@ -72,3 +72,22 @@ boxplot(mpg~cyl, data = mtcars,
         col=c("green","yellow","purple"),
         names=c("High","Medium","Low")
         )
+
+
+#Bar plot
+#Bar and column charts are used to compare different items
+#Bar charts are often used when comparing categories of data 
+cars<- c(1,3,6,4,9)
+trucks<- c(2,5,4,5,12)
+suvs=c(4,4,6,6,16)
+autos_data=data.frame(cars,trucks,suvs)
+autos_data
+barplot(autos_data$cars, main="Auto Data",xlab="Days", ylab="Total", names.arg=c("Mon","Tue","Wed","Thu","Fri"),
+        border="blue",density=c(10,20,30,40,50))
+
+#graphs autos with adjacent bars using rainbow colors
+barplot(as.matrix(autos_data), main="Autos", ylab="Total",beside=TRUE, col=rainbow(5))
+
+#place the legend at the top-left corner with no frame
+#using rainbow colors
+legend("topleft",c("Mon","Tue","Wed","Thu","Fri", cex=1,bty="n",fill=rainbow(5)))#byt=type of box to be drawn around the legend
