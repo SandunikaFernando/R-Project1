@@ -90,7 +90,7 @@ barplot(as.matrix(autos_data), main="Autos", ylab="Total",beside=TRUE, col=rainb
 
 #place the legend at the top-left corner with no frame
 #using rainbow colors
-legend("topleft",c("Mon","Tue","Wed","Thu","Fri", cex=1,bty="n",fill=rainbow(5)))#byt=type of box to be drawn around the legend
+legend("topleft",c("Mon","Tue","Wed","Thu","Fri"), cex=1,bty="n",fill=rainbow(5))#byt=type of box to be drawn around the legend
 
 #Graph autos (transposing the matrix)using heat colors,
 #put 10% of the space between each bar, make labels
@@ -98,8 +98,8 @@ legend("topleft",c("Mon","Tue","Wed","Thu","Fri", cex=1,bty="n",fill=rainbow(5))
 autos_data
 t(autos_data)
 barplot(t(autos_data),main="Autos", ylab="Total",
-        col=heat.colors(3),space=0.1, cex.axis=0.8, las=1,
-        names.arg=c("Mon","Tue","Wed","Thu","Fri"),cex=0.8)
+        col=heat.colors(3),space=0.1, cex.axis=1, las=1,
+        names.arg=c("Mon","Tue","Wed","Thu","Fri"),cex=1)
 
 legend("topleft", c("Cars","Trucks","SUVs"), cex=1, bty="n",fill=heat.colors(3))
 
@@ -118,7 +118,77 @@ hist(islands,probability = T)#proportion (or probabilities)
 hist(islands, breaks = 5, 
      main = "islands histogrm", xlab = "Area range", border = "red", col = "grey")
 
+head(airquality)
+hist(airquality$Temp)
+
+#adding label names and title
+hist(airquality$Temp,
+     main="Temperature Histogram",
+     xlab="Temperature",
+     ylab="Temperature Frequency",
+     las=1)
+
+#adding color to bars
+hist(airquality$Temp,
+     main="Tempareture Histogram",
+     xlab="Temparature",
+     ylab="Temperature Frequency",
+     las=1,
+     col=c("skyblue","chocolate2"))
+
+#removing all the annotation and axis lim and name to give our own
+hist(airquality$Temp,
+     axes=F,
+     ann=F,
+     labels=T,
+     ylim=c(0,35),
+     col = c("skyblue","chocolate2"))
 
 
+#specifying own annotations
+hist(airquality$Temp,
+     main="Tempareture Histogram",
+     xlab="Temparature",
+     ylab="Temperature Frequency",
+     las=1,
+     col=c("skyblue","chocolate2"),
+     xlim=c(55,100),
+     ylim=c(0,40),
+     density=80)
 
+#giving the number of breaks and adding numbers to the bars
+hist(airquality$Temp,
+     breaks=20,
+     main="Tempareture Histogram",
+     xlab="Temparature",
+     ylab="Temperature Frequency",
+     las=1,
+     col=c("skyblue","chocolate2"),
+     labels = T,
+     ylim=c(0,25)
+     )
 
+#changing frequency on y axis to density/probability values; removing labels also as they are in freq value only and adding density line
+hist (airquality$Temp,
+      breaks = 20,
+      freq=F,
+      main="Tempareture Histogram",
+      xlab="Temparature",
+      ylab="Temperature Frequency",
+      las=1,
+      col=c("skyblue","chocolate2"),
+      labels = T,
+      )
+
+lines(density(airquality$Temp),
+      lwd=4,col="red")
+
+hist(airquality$Temp,
+     breaks=20,
+     main="Tempareture Histogram",
+     xlab="Temparature",
+     ylab="Temperature Frequency",
+     las=1,
+     col=c("skyblue","chocolate2"),
+     labels = T,
+     ylim=c(0,25) )
