@@ -192,3 +192,39 @@ hist(airquality$Temp,
      col=c("skyblue","chocolate2"),
      labels = T,
      ylim=c(0,25) )
+
+
+
+#Pie charts
+#pie charts are used to show parts of a whole
+#Represents numbers in percentages, and the total sum of all the divided segments equals 100 percent
+
+#Create a pie chart for cars 
+cars<- c(1,3,6,4,9)
+pie(cars)
+
+#custom colors and labels
+pie(cars,main="Cars", col=rainbow(length(cars)),labels=c("Mon","Tue","Wed","Thu","Fri"))
+
+#Define some colors ideal for black & white print
+colors <- c("white","grey70","grey90","grey50","black")
+
+#calculate the precentage for each day, rounded to one 
+#decimal place
+car_labels<-round(cars/sum(cars)*100,1)
+car_labels
+#concatenate a "%" char after each value
+car_labels<-paste(car_labels, "%", sep=" ")
+car_labels
+
+#and labels
+pie(cars, main="Cars",col=colors, labels=car_labels, cex=0.8)
+
+#create a legend at the right
+legend('topright', c("Mon","Tue","Wed","Thu","Fri"),cex=0.8, fill=colors)
+
+#3D Exploded pie chart 
+library(plotrix)
+slices <-c(10,12,4,16,8)
+lbls <- c("US","UK","Australia","Germany","France")
+pie3D(slices,labels=lbls,explode=0.2, main="Pie Chart of Countries")
