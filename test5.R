@@ -209,7 +209,7 @@ pie(cars,main="Cars", col=rainbow(length(cars)),labels=c("Mon","Tue","Wed","Thu"
 #Define some colors ideal for black & white print
 colors <- c("white","grey70","grey90","grey50","black")
 
-#calculate the precentage for each day, rounded to one 
+#calculate the percentage for each day, rounded to one 
 #decimal place
 car_labels<-round(cars/sum(cars)*100,1)
 car_labels
@@ -228,3 +228,42 @@ library(plotrix)
 slices <-c(10,12,4,16,8)
 lbls <- c("US","UK","Australia","Germany","France")
 pie3D(slices,labels=lbls,explode=0.2, main="Pie Chart of Countries")
+
+
+#GGPlot 
+#install.packages()
+library(ggplot2)
+library(dplyr)
+mtcars
+
+#Scatter Plot
+#basic scatter plot (wt vs mpg)
+plot(mtcars$wt, mtcars$mpg)
+
+#1st layer of ggplot- creating base for plotting
+ggplot(data=mtcars, aes(x=wt, y=mpg))
+
+#adding geometry to graph
+ggplot(data=mtcars,aes(x=wt, y=mpg))+geom_point(color='red',size=3)
+ggplot(data=mtcars, aes(x=wt, y=mpg))+geom_point(color='red',size=3,shape=20)
+head(mtcars)
+
+table(mtcars$cyl)
+table(mtcars$gear)
+table(mtcars$carb)
+table(mtcars$am)
+
+#adding different dimensions to ggplot now: adding col as per no. cyl
+#ggplot(data=mtcars, aes(x=wt,y=mpg))+geom_point(color=cyl, size=3,shape=20) #Error "object 'cyl' not found"
+ggplot(data=mtcars, aes(x=wt,y=mpg))+geom_point(aes(color=cyl), size=3,shape=20)
+ggplot(data=mtcars, aes(x=wt,y=mpg))+geom_point(aes(color=factor(cyl)), size=3,shape=20)
+
+#adding different dimensions to ggplot now: adding size as per type os transmission
+ggplot(data=mtcars, aes(x=wt, y=mpg))+geom_point(aes(color=factor(cyl),size=factor(am)), shape=20)
+
+#adding different dimensions to ggplot now: adding col as per no. of gear
+ggplot(data=mtcars, aes(x=wt, y=mpg))+geom_point(aes(color=factor(cyl), size=factor(am)),shape=20)
+
+#adding labels to the graph
+ggplot(data=mtcars, aes(x=wt, y=mpg))+geom_point(aes(shape=factor(gear), size=factor(am),color=factor(cyl)))+labs(title='Adding dimensions to graph',subtitle='Sactter Plot', x='Weight',y='Mileage')
+
