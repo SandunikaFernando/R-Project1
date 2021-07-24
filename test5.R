@@ -276,3 +276,43 @@ library(ggrepel)
 ggplot(data=mtcars, aes(x=wt,y=mpg))+ geom_point(aes(color=factor(cyl),size=factor(am),shape=factor(gear)))+ facet_grid(vs~carb)+labs(title='Adding dimensions to graph', subtitle='Scatter Plot', x='Weight', y='Mileage')+ ggrepel::geom_text_repel(aes(label=rownames(mtcars)),size=2.5)
 
 
+#BarPlot----
+#converting certain columns to factor data type (categorial variables)
+barplot(mtcars$cyl)
+barplot(table(mtcars$cyl))
+
+#creating bar plot using no. of cyl to fill colors to bars/if col will be used - borders of bar will be colored
+
+ggplot(data=mtcars, aes(x=cyl))+geom_bar()
+ggplot(data=mtcars, aes(x=cyl))+geom_bar(fill='red')
+ggplot(data=mtcars, aes(x=cyl))+geom_bar(col='red')
+ggplot(data=mtcars, aes(x=cyl))+geom_bar(aes(fill=factor(cyl)))
+ggplot(data=mtcars, aes(x=cyl))+geom_bar(aes(col=factor(cyl)))
+
+
+#if you want the heights of the bars to represent values in the data, use stat ="identity" and map a value to the y aesthetic
+#summerising and summing the count of cars against no. of cyl ; using stat="identity to get count on top of bars
+
+mtcars %>% group_by(cyl) %>% summarise (n=n()) %>% ggplot(.,aes(x=cyl,y=n))+ geom_bar(stat='identity',aes(fill=factor(cyl)))+geom_text(aes(label=n))
+
+mtcars %>% group_by(cyl,gear,am,vs) %>% summarise (n=n()) %>% ggplot(.,aes(x=cyl,y=n))+ geom_bar(stat='identity',aes(fill=factor(cyl)))+ geom_text(aes(label=n))+facet_grid(gear~am)
+
+#updating facetlayer-scales and space = free--makes full use of the graph areas otherwise the values are very small so the bars will also be short-zooms the graph by auto selecting the limits
+
+mtcars %>% group_by(cyl,gear,am,vs) %>% summarise (n=n()) %>% ggplot(.,aes(x=cyl,y=n))+ geom_bar(stat='identity',aes(fill=factor(cyl)))+ geom_text(aes(label=n))+facet_grid(gear~am, scales='free',space='free')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
