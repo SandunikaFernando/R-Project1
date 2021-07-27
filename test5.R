@@ -310,3 +310,34 @@ ggplot(a,aes(x=factor(cyl),y=factor(gear),fill=n))+geom_tile()+geom_text(aes(lab
 
 ggplot(a,aes(x=factor(cyl),y=factor(gear),fill=n))+geom_tile()+geom_text(aes(label=n),size=6)+scale_fill_gradient2()
 
+
+#Simple Linear Regression in R
+?women
+women
+str(women)
+dim(women)
+
+#check linearity of the dataa set first by plotting it
+plot(women$height,women$weight)
+
+#building a model for women data set
+lmmodel=lm(weight~height, data=women)
+lmmodel
+
+#checking summary of the model
+summary(lmmodel)
+
+#plotting a regression line on graph to show the relationship
+abline(lm(weight~height, data=women),col='red',lwd=1)
+
+#predicting the value of y (weight) with a new data of x (height)
+head(women)
+range(women$weight)
+range(women$height)
+newdata=data.frame(height=c(50,75,80,85))
+pred_weight=predict(lmmodel, newdata)
+pred_weight
+
+#checking assumptions of the model by diagnostic plotting
+plot(lmmodel)
+
