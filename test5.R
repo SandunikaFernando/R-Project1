@@ -341,3 +341,69 @@ pred_weight
 #checking assumptions of the model by diagnostic plotting
 plot(lmmodel)
 
+
+#Multi-Linear Regression----
+
+?mtcars
+names(mtcars)
+View(mtcars)
+plot(mpg~hp, data=mtcars)
+plot(mpg~wt, data=mtcars)
+result<-lm(mpg~hp+wt,data=mtcars)
+summary(result)
+
+#value of adjust R2=0.82
+#checking Multicolinearity:
+
+result<-lm(mpg~hp+wt+disp+cyl+gear, data=mtcars)
+summary(result)
+
+#creating training and test data
+trainingRowIndex <- sample(1:nrow(mtcars),0.8*nrow(mtcars))#row indices for training data
+trainingData <-mtcars[trainingRowIndex, ]#model training data
+testData <-mtcars[-trainingRowIndex, ]
+
+#Build the model on training data----
+lmMod <-lm(mpg~cyl
+           +disp
+           +hp
+           +wt, data=trainingData)#build the model
+#review diagnostic measures
+summary(lmMod)#model summary
+
+#Accuracy:
+#since R2 is close to 1, i.e., 0.84, hence model is significant
+
+#Prediction----
+#Predicing values for test dataset
+
+testData$mpgPred <- predict(lmMod, testData)
+View(testData)
+
+#accuracy----
+#determining Prediction accuracy on test dataset using MAPE
+
+#MAPE(MeanAbsolutePrecentageError):
+#lower its value better is the accuracy of the model
+#MAPE Calculation:
+
+mape <- mean(abs(testData$mpgPred-testData$mpg)/testData$mpg)
+mape
+
+#checking assumptions through diagnostics plots
+plot(lmMod)
+
+lmMod
+
+
+
+
+
+
+
+
+
+
+
+
+
