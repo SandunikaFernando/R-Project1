@@ -396,7 +396,7 @@ plot(lmMod)
 lmMod
 
 
-#Logical Regression
+#Logical Regression----
 
 mydata <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
 head(mydata)
@@ -410,7 +410,9 @@ mydata$admit=as.factor(mydata$admit)
 str(mydata)
 dim(mydata)
 
-
+#wo-way contingency table of categorical outcome and predictors we want 
+#to make sure there are not 0 cells
+#which rank of institute are more successful (in nos/ %) in getting admitted - 2/ 1
 xtabs(~admit +rank,data=mydata)
 
 mylogit=glm(admit~gre+rank,data=mydata,family="binomial")
