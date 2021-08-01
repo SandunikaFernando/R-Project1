@@ -396,13 +396,25 @@ plot(lmMod)
 lmMod
 
 
+#Logical Regression
+
+mydata <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
+head(mydata)
+str(mydata)
+summary(mydata)
+sapply(mydata,sd)
+
+#rank is a categorical values, but is saved in integer datatypes; lets convert it to factors
+mydata$rank=as.factor(mydata$rank)
+mydata$admit=as.factor(mydata$admit)
+str(mydata)
+dim(mydata)
 
 
+xtabs(~admit +rank,data=mydata)
 
-
-
-
-
+mylogit=glm(admit~gre+rank,data=mydata,family="binomial")
+summary(mylogit)
 
 
 
