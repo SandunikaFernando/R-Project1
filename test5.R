@@ -396,7 +396,7 @@ plot(lmMod)
 lmMod
 
 
-#Logical Regression----
+#Logistic Regression----
 
 mydata <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
 head(mydata)
@@ -415,9 +415,32 @@ dim(mydata)
 #which rank of institute are more successful (in nos/ %) in getting admitted - 2/ 1
 xtabs(~admit +rank,data=mydata)
 
+?glm
 mylogit=glm(admit~gre+rank,data=mydata,family="binomial")
 summary(mylogit)
 
+#dividing the data set into training and test for analysis
+
+n=nrow(mydata)
+sample=sample(1:n, size=round(0.7*n),replace=FALSE)
+train= mydata[sample,]
+test= mydata[-sample,]
+
+#Model 2
+?glm
+logR1=glm(admit~gre+gpa+rank,train,family=binomial)
+logR1
+summary(logR1)
+
+#predict on test set
+?predict
+predicted=predict(logR1,newdata=test,type='response')
+head(predicted)
+predictV=factor(ifelse(predicted<0.5,0,1))
+head(predictV)
+test=cbind(test,predictV)
+head(test)
+str(test)
 
 
 
