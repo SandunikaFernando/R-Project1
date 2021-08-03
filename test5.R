@@ -442,5 +442,46 @@ test=cbind(test,predictV)
 head(test)
 str(test)
 
+#checking accuracy of the model
+library(caret)
+
+confusionMatrix(test$admit, test$predictV)#better
+
+#Model 3
+n=nrow(mydata)
+sample=sample(1:n,size=round(0.7*n), replace=F)
+train=mydata[sample,]
+test2=mydata[-sample,]
+
+logR2=glm(admit ~ gre+rank, train, family=binomial)#gpa removed
+logR2
+summary(logR2)
+
+pred=predict(logR2, newdata = test2, type = 'response')
+predict=factor(ifelse(pred<0.5,0,1))
+test2=cbind(test2, predict)
+head(test2)
+
+#checking accuracy using caret package: confusion matrix
+caret::confusionMatrix(test2$admit,test2$predict) #better
+
+#confusion matrix using table command
+table(test2$admit,pred>0.5)
+
+#checking accuracy of model using mean command
+mean(test2$predict==test2$admit)
+
+#New data prediction
+range(mydata$gpa)
+df2=data.frame(gre=700, rank=factor(2))
+df2
+
+p=predict(logR2, newdata=df2)
+p
+p1=factor(ifelse(p<0.5,0,1))
+p1
+df.p=cbind(df2,p1)
+df.p
+
 
 
