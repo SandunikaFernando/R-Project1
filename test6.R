@@ -72,3 +72,29 @@ head(pred2)
 
 #confused matrix to find accuracy----
 caret:: confusionMatrix(testSet$survived,pred1)
+
+head(ptitanic)
+
+dt4=rpart(age~.,data=ptitanic, method="anova")#annova is used for regression tree
+dt4
+dim(ptitanic)
+rpart.plot(dt4,nn=T, cex=.8)
+rpart.rules(dt4, cover=T, nn=T)
+
+#using dplyr package
+?sample_frac
+dim(ptitanic)
+1309*0.1/100
+
+sample2= sample_frac(ptitanic, size=.1)
+head(sample2)
+dim(sample2)
+predAge<-predict(dt4,newdata=sample2, type='vector')
+head(predAge)
+predict(dt4,newdataw=sample2)
+
+sample2=cbind(sample2, predAge)
+head(sample2)
+
+caret:: RMSE(sample2$age, predAge, na.rm=T)
+#lesser the better
