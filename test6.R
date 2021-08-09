@@ -98,3 +98,45 @@ head(sample2)
 
 caret:: RMSE(sample2$age, predAge, na.rm=T)
 #lesser the better
+
+
+
+#Cluster Analysis-----
+#Clustering with mtcars
+pacman :: p_load(dplyr,ggplot2)
+head(mtcars)
+df=mtcars[,c('mpg','wt','hp','am')]
+head(df)
+
+#K means
+#Building k means clutering models with 3 centers
+
+km1 = kmeans(df, centers=3)
+km1
+cbind(df,km1$cluster)
+df[km1$cluster==1,]
+df%>% filter(km1$cluster==2)
+table(km1$cluster)#help to know the number of observations in each cluster
+
+#based on custers lets find the mean of variables in our data set
+df%>%group_by(clusterNo=km1$cluster)%>%summarise_all(mean, na.rm=T)
+
+#plotting the clusters using package factoextra
+library(factoextra)
+fviz_cluster(km1, data=df)
+
+#how to choose best number of cluster - elbow method
+#elbow method contains 2 method: factoextra and NbClust
+#factoextra method
+
+set.seed(123)
+?geom_vline
+fviz_nbclust(df,kmeans,method="wss")#with-in-Sum-of-squares
+fviz_nbclust(df, kmeans, method="wss")+geom_vline(xintercept = 3, linetype=2)+
+labs(subtitle = "Elbow Method")
+
+#xintercept: Parameters that control the position of the line
+
+#NbClust method:
+library(NbClust)
+?NbClust
