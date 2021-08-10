@@ -140,3 +140,22 @@ labs(subtitle = "Elbow Method")
 #NbClust method:
 library(NbClust)
 ?NbClust
+
+set.seed(1234)
+nc<-NbClust(df,distance="euclidean", min.nc=2,max.nc=6, method="kmeans")
+nc
+
+marks1=c(65,60,70,75,67)
+marks2=c(95,80,52,55,57)
+project=c(120,100,90,80,110)
+exam3=data.frame(marks1,marks2,project)
+
+#project marks will be more dominating
+exam3scaled=scale(exam3)#function used to scale the data
+exam3scaled
+cluster2C=kmeans(exam3scaled,centers=2)
+cluster2C
+cluster2C$cluster
+cbind(exam3,group=cluster2C$cluster)
+
+
