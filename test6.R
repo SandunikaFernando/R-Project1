@@ -159,3 +159,44 @@ cluster2C$cluster
 cbind(exam3,group=cluster2C$cluster)
 
 
+#hierarchical clustering -----
+df = mtcars[,c('mpg', 'wt', 'hp', 'am')]
+dfD = dist(df)
+dfD
+
+#example for distance matrix 
+#using the data created exam3 
+exam3
+#project marks will be more dominating 
+xam3scaled = scale(exam3)
+exam3scaled
+res.dist <- dist(exam3, method = "euclidean")
+res.dist
+
+hc = hclust(dfD)
+plot(hc) # which car is closer to the other 
+
+sub_grp <- cutree(hc, k = 4)
+#number of members in each cluster 
+table(sub_grp)
+
+
+#creating models using different methods : average
+hc.average = hclust(dfD, method = 'average')
+hc.average
+plot(hc.average, hang=-1, cex=.8, main='Average Likage Clustering : cluster Nos')
+
+
+rect.hclust(hc.average, k=4, border = 2:6)
+plot(hc.average, hang = -1, cex=.8, main = 'Avarage Linkage Clustering')
+rect.hclust(hc.average, h=100)
+
+
+abline(h=100)
+
+
+
+
+
+
+
