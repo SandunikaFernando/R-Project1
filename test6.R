@@ -100,7 +100,6 @@ caret:: RMSE(sample2$age, predAge, na.rm=T)
 #lesser the better
 
 
-
 #Cluster Analysis-----
 #Clustering with mtcars
 pacman :: p_load(dplyr,ggplot2)
@@ -195,8 +194,7 @@ rect.hclust(hc.average, h=100)
 abline(h=100)
 
 
-
-
-
-
-
+#Data sets
+?mtcars
+?mtcars;ptitanic
+?women
