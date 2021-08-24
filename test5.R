@@ -26,7 +26,6 @@ plot(x=x1, y=y1,xlim=c(0,10),ylim=c(0,100),type = 'b',cex=1,col='blue')
 plot(mtcars$wt, mtcars$mpg, col='blue', pch=1, cex=1.5)
 plot(mtcars$wt, mtcars$mpg, col='blue', pch=20, cex=1, xlab='Weight', ylab='Mileage', main='Weight Vs MPG')
 
-
 table(mtcars$gear)
 table(mtcars$cyl)
 plot(x= mtcars$wt, y= mtcars$mpg, col=mtcars$cyl, pch=mtcars$gear, cex=1, xlab='Weight', ylab='Mileage', main='Weight Vs MPG')
@@ -40,7 +39,6 @@ lapply(mtcars[,c('cyl','gear','am')], table)
 
 #you should know this to plan how many colors, shapes, size to choose
 plot(x=mtcars$wt, y=mtcars$mpg, col=c(1,2,3), pch=c(20,21,22), cex=c(1,2), xlab='Weight', ylab='Mileage', main='Weight Vs Mileage')
-
 
 #Boxplot
 
@@ -72,7 +70,6 @@ boxplot(mpg~cyl, data = mtcars,
         col=c("green","yellow","purple"),
         names=c("High","Medium","Low")
         )
-
 
 #Bar plot
 #Bar and column charts are used to compare different items
@@ -192,7 +189,6 @@ hist(airquality$Temp,
      col=c("skyblue","chocolate2"),
      labels = T,
      ylim=c(0,25) )
-
 
 
 #Pie charts
@@ -432,7 +428,7 @@ logR1=glm(admit~gre+gpa+rank,train,family=binomial)
 logR1
 summary(logR1)
 
-#predict on test set
+#predict on test set----
 ?predict
 predicted=predict(logR1,newdata=test,type='response')
 head(predicted)
@@ -482,6 +478,4 @@ p1=factor(ifelse(p<0.5,0,1))
 p1
 df.p=cbind(df2,p1)
 df.p
-
-
 
