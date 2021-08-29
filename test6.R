@@ -53,7 +53,6 @@ rpart.plot(dt3)
 rpart.plot(dt3,type=1, extra=104, nn=T,cex=.9)
 rpart.plot(dt3,type=1, extra=104, nn=T,cex=.9)
 
-
 printcp(dt3)
 dt3b<-prune(dt3, cp=,01)
 dt3b
@@ -179,20 +178,16 @@ sub_grp <- cutree(hc, k = 4)
 #number of members in each cluster 
 table(sub_grp)
 
-
 #creating models using different methods : average
 hc.average = hclust(dfD, method = 'average')
 hc.average
 plot(hc.average, hang=-1, cex=.8, main='Average Likage Clustering : cluster Nos')
 
-
 rect.hclust(hc.average, k=4, border = 2:6)
 plot(hc.average, hang = -1, cex=.8, main = 'Avarage Linkage Clustering')
 rect.hclust(hc.average, h=100)
 
-
 abline(h=100)
-
 
 #Data sets
 ?mtcars
