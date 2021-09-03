@@ -107,7 +107,7 @@ df=mtcars[,c('mpg','wt','hp','am')]
 head(df)
 
 #K means
-#Building k means clutering models with 3 centers
+#Building k means clustering models with 3 centers
 
 km1 = kmeans(df, centers=3)
 km1
